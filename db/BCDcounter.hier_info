@@ -1,0 +1,87 @@
+|CounterBlock
+Borrow <= counter:inst.borrowBCD
+Clock => counter:inst1.clock
+Reset => inst10.IN1
+Reset => counter:inst.reset
+Up => counter:inst1.up
+Up => inst9.IN1
+Down => counter:inst1.down
+Down => inst8.IN1
+LSB[0] <= counter:inst1.count[0]
+LSB[1] <= counter:inst1.count[1]
+LSB[2] <= counter:inst1.count[2]
+LSB[3] <= counter:inst1.count[3]
+MSB[0] <= counter:inst.count[0]
+MSB[1] <= counter:inst.count[1]
+MSB[2] <= counter:inst.count[2]
+MSB[3] <= counter:inst.count[3]
+
+
+|CounterBlock|counter:inst
+clock => count[3]~reg0.CLK
+clock => count[2]~reg0.CLK
+clock => count[1]~reg0.CLK
+clock => count[0]~reg0.CLK
+clock => carryBCD~reg0.CLK
+clock => borrowBCD~reg0.CLK
+reset => count[3]~reg0.ACLR
+reset => count[2]~reg0.ACLR
+reset => count[1]~reg0.ACLR
+reset => count[0]~reg0.ACLR
+reset => borrowBCD~reg0.ENA
+reset => carryBCD~reg0.ENA
+count[0] <= count[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+count[1] <= count[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+count[2] <= count[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+count[3] <= count[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+up => borrowBCD~2.OUTPUTSELECT
+up => carryBCD~0.OUTPUTSELECT
+up => count~11.OUTPUTSELECT
+up => count~10.OUTPUTSELECT
+up => count~9.OUTPUTSELECT
+up => count~8.OUTPUTSELECT
+up => always0~0.IN0
+down => borrowBCD~0.OUTPUTSELECT
+down => count~3.OUTPUTSELECT
+down => count~2.OUTPUTSELECT
+down => count~1.OUTPUTSELECT
+down => count~0.OUTPUTSELECT
+down => always0~1.IN0
+carryBCD <= carryBCD~reg0.DB_MAX_OUTPUT_PORT_TYPE
+borrowBCD <= borrowBCD~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|CounterBlock|counter:inst1
+clock => count[3]~reg0.CLK
+clock => count[2]~reg0.CLK
+clock => count[1]~reg0.CLK
+clock => count[0]~reg0.CLK
+clock => carryBCD~reg0.CLK
+clock => borrowBCD~reg0.CLK
+reset => count[3]~reg0.ACLR
+reset => count[2]~reg0.ACLR
+reset => count[1]~reg0.ACLR
+reset => count[0]~reg0.ACLR
+reset => borrowBCD~reg0.ENA
+reset => carryBCD~reg0.ENA
+count[0] <= count[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+count[1] <= count[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+count[2] <= count[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+count[3] <= count[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+up => borrowBCD~2.OUTPUTSELECT
+up => carryBCD~0.OUTPUTSELECT
+up => count~11.OUTPUTSELECT
+up => count~10.OUTPUTSELECT
+up => count~9.OUTPUTSELECT
+up => count~8.OUTPUTSELECT
+up => always0~0.IN0
+down => borrowBCD~0.OUTPUTSELECT
+down => count~3.OUTPUTSELECT
+down => count~2.OUTPUTSELECT
+down => count~1.OUTPUTSELECT
+down => count~0.OUTPUTSELECT
+down => always0~1.IN0
+carryBCD <= carryBCD~reg0.DB_MAX_OUTPUT_PORT_TYPE
+borrowBCD <= borrowBCD~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
